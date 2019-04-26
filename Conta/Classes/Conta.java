@@ -8,6 +8,10 @@ public class Conta{
     private char   mTipo;
     private long   mSenha;
     private String mDataCriacao;
+    
+    private static int totalContasC=0;
+    private static int totalContasP=0;
+    private static int totalContasS=0;
 
     public Conta(String nome,double saldo){
         mNome = nome;
@@ -17,6 +21,9 @@ public class Conta{
         mLimite = 200;
 
         mTipo = 'c';
+        
+        totalContasC++;
+        
     }
 
 
@@ -42,7 +49,7 @@ public class Conta{
     public double getSaldo(){
         return mSaldo;
     }
-        
+         
     public double getmLimite() {
     	return mLimite;
     }
@@ -50,11 +57,47 @@ public class Conta{
     	mLimite = limite;
     }
     
-    public char getmTipo() {
-    	return mTipo;
+    public void getmTipo() {
+		switch(mTipo){
+			case 'c':
+				System.out.println("Conta Corrente");	
+				break;
+			case 'p':
+				System.out.println("Conta Poupança");			
+				break;
+			case 's':
+				System.out.println("Conta Salário");			
+				break;
+			default:
+				System.out.println("Conta Indefinida");				
+				break;
+		}
+
     }
-    public void set (char tipo) {
-    	mTipo = tipo;
+    public void setmTipo (char tipo) {
+		switch(mTipo){
+			case 'c':
+				totalContasC--;
+				break;
+			case 'p':
+				totalContasP--;
+				break;
+			case 's':
+				totalContasS--;
+				break;
+		}
+		switch(tipo){
+			case 'c':
+				totalContasC++;
+				break;
+			case 'p':
+				totalContasP++;
+				break;
+			case 's':
+				totalContasS++;
+				break;
+		}		
+    	mTipo = tipo;    	
     }
 
     public void setSenha(long senha){
@@ -72,5 +115,14 @@ public class Conta{
     	mDataCriacao = data;
     }
                              
-  
+ 	public static int getTotalContasC(){
+		return totalContasC;
+ 	} 
+ 	
+ 	public static int getTotalContasP(){
+		return totalContasP;
+ 	} 
+ 	public static int getTotalContasS(){
+		return totalContasS;
+ 	}  	 	
 }
