@@ -17,7 +17,12 @@ public class Gerente extends Funcionario{
 	
 	public static void setmNumeroDeFuncinariosGerenciados(int func){
 		mNumeroDeFuncionariosGerenciados=func;
-	}		
+	}
+	
+	@Override
+	public double getBonificacao(){
+		return mSalario*0.15;
+	}
 	
 	
 }

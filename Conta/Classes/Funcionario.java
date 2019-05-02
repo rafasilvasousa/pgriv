@@ -1,8 +1,8 @@
 package Classes;
-class Funcionario{
-	private String mNome;
-	private String mCpf;
-	private double mSalario;
+public class Funcionario{
+	protected String mNome;
+	protected String mCpf;
+	protected double mSalario;
 	
 	public String getmNome(){
 		return mNome;
@@ -22,5 +22,9 @@ class Funcionario{
 	}
 	public void setmSalario(double salario){
 		mSalario=salario;
+	}
+	
+	public double getBonificacao(){
+		return mSalario*0.1;
 	}	
 }
