@@ -1,17 +1,19 @@
-package Classes;
-public class Conta{
-    private int    mNumConta;
-    private String mNome;
-    private double mSaldo;
-    private double mLimite;
+package classes;
 
-    private char   mTipo;
-    private long   mSenha;
-    private String mDataCriacao;
-    
-    private static int totalContasC=0;
-    private static int totalContasP=0;
-    private static int totalContasS=0;
+public class Conta{
+    protected int    mNumConta;
+    protected String mNome;
+    protected double mSaldo;
+    protected double mLimite;
+
+    protected char   mTipo;
+    protected long   mSenha;
+    protected String mDataCriacao;
+
+    private static int totalContas = 0;
+    private static int totalContasCorrente = 0;
+    private static int totalContasPoupanca = 0;
+    private static int totalContasSalario = 0;
 
     public Conta(String nome,double saldo){
         mNome = nome;
@@ -21,83 +23,7 @@ public class Conta{
         mLimite = 200;
 
         mTipo = 'c';
-        
-        totalContasC++;
-        
-    }
-
-
-    
-    public int getmNunConta() {
-    	return mNumConta;
-    }
-    public void setgetmNunConta(int numConta) {
-    	mNumConta= numConta;
-    }
-    
-    public String getmNome() {
-		return mNome;
-    }
-    public void setmNome(String nome) {
-		mNome = nome;
-    }
-
-    public void setSaldo(double saldo){
-        mSaldo = saldo;
-    }
-
-    public double getSaldo(){
-        return mSaldo;
-    }
-         
-    public double getmLimite() {
-    	return mLimite;
-    }
-    public void setmLimite(double limite) {
-    	mLimite = limite;
-    }
-    
-    public void getmTipo() {
-		switch(mTipo){
-			case 'c':
-				System.out.println("Conta Corrente");	
-				break;
-			case 'p':
-				System.out.println("Conta Poupança");			
-				break;
-			case 's':
-				System.out.println("Conta Salário");			
-				break;
-			default:
-				System.out.println("Conta Indefinida");				
-				break;
-		}
-
-    }
-    public void setmTipo (char tipo) {
-		switch(mTipo){
-			case 'c':
-				totalContasC--;
-				break;
-			case 'p':
-				totalContasP--;
-				break;
-			case 's':
-				totalContasS--;
-				break;
-		}
-		switch(tipo){
-			case 'c':
-				totalContasC++;
-				break;
-			case 'p':
-				totalContasP++;
-				break;
-			case 's':
-				totalContasS++;
-				break;
-		}		
-    	mTipo = tipo;    	
+     
     }
 
     public void setSenha(long senha){
@@ -106,23 +32,135 @@ public class Conta{
 
     public long getSenha(){
         return mSenha;
-    }    
+    }
+
+
+    public void setSaldo(double saldo){
+        mSaldo = saldo;
+    }
+
+    public double getSaldo(){
+        return mSaldo;
+    }
+
+    public int getNumConta(){
+        return mNumConta;
+    }
+    public void setNumConta(int num){
+        mNumConta = num;
+    }
+
+    public String getNome(){
+        return mNome;
+    }
+    public void setNome(String nome){
+        mNome = nome;
+    }
+
     
-    public String getmDataCriacao() {
-    	return mDataCriacao;
+    public double getLimite(){
+        return mLimite;
     }
-    public void setmDataCriacao(String data) {
-    	mDataCriacao = data;
+    public void setLimite(double limite){
+        mLimite = limite;
     }
-                             
- 	public static int getTotalContasC(){
-		return totalContasC;
- 	} 
- 	
- 	public static int getTotalContasP(){
-		return totalContasP;
- 	} 
- 	public static int getTotalContasS(){
-		return totalContasS;
- 	}  	 	
+
+    public void setTipo(char tipo){
+        switch(mTipo){
+            case 'c':
+                totalContasCorrente--;
+                break;
+            case 'p':
+                totalContasPoupanca--;
+                break;
+            case 's':
+                totalContasSalario--;
+                break;
+            default:
+                break;
+
+        }
+
+
+        mTipo = tipo;
+
+        switch(mTipo){
+            case 'c':
+                totalContasCorrente++;
+                break;
+            case 'p':
+                totalContasPoupanca++;
+                break;
+            case 's':
+                totalContasSalario++;
+                break;
+            default:
+                break;
+
+        }
+
+
+    }
+    public char getTipo(){
+        return mTipo;
+    }
+
+    public String getDataCriacao(){
+        return mDataCriacao;
+    }
+    public void setDataCriacao(String datac){
+        mDataCriacao = datac;
+    }
+    
+    public void getTipoConta(){
+        switch(mTipo){
+            case 'c':
+                System.out.println("Conta Corrente");
+                break;
+            case 'p':
+                System.out.println("Conta Poupança");
+                break;
+            case 's':
+                System.out.println("Conta Salário");
+                break;
+            default:
+                System.out.println("Tipo de Conta Indefinida");
+
+        }
+
+    }
+
+    public static String getTipoContaEstatico(char tipo){
+        switch(tipo){
+            case 'c':
+                return "Conta Corrente";
+            case 'p':
+                return "Conta Poupança";
+            case 's':
+                return "Conta Salário";
+            default:
+                return "Tipo de Conta Indefinida";
+
+        }
+
+    }
+
+    public static int getTotalContas(){
+        return totalContas;
+    }
+
+    public static int getTotalContasCorrente(){
+        return totalContasCorrente;
+    }
+
+    public static int getTotalContasPoupanca(){
+        return totalContasPoupanca;
+    }
+
+    public static int getTotalContasSalario(){
+        return totalContasSalario;
+    }
+
+    
+  
 }
